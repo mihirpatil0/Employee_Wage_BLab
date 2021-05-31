@@ -7,12 +7,14 @@ public class EmployeeWageBuilder
 	public static void main(String[] args) 
 	{
 		System.out.println("Welcome to Employee Wage Computation Program");
-		int isPresent = 1;
-		int isPartTime = 2;
+		//int isPresent = 1;
+		//int isPartTime = 2;
 		int wagePerHr = 20;
 		int fullDayHr = 8;
-		int partTimeHr = 4;
-		int finalWage;
+		int partDayHr = 4;
+		int dayInMonth = 20;
+		int dayWage;
+		int monthlyWage;
 		
 		Random rmd = new Random();
 		int empCheck = rmd.nextInt(3);
@@ -20,21 +22,49 @@ public class EmployeeWageBuilder
 		//the min value is inclusive while the max value is exclusive.
 		//double empCheck = Math.floor(Math.random()*(3-0+1)+0*10)%2;
 		//System.out.println("Random number generated is" + " " + empCheck );
-		if (empCheck == isPresent)
+		/*if (empCheck == isPresent)
 		{
-			finalWage = (wagePerHr * fullDayHr );
+			dayWage = (wagePerHr * fullDayHr );
 			System.out.println("Employee is Full Time Present!");
-			System.out.println("Daily wage of an Full timer employee is" + " " + finalWage);
+			System.out.println("Daily wage of an Full timer employee is" + " " + dayWage);
 		}
 		else if (empCheck == isPartTime) 
 		{
-			finalWage = (wagePerHr * partTimeHr );
+			dayWage = (wagePerHr * partDayHr );
 			System.out.println("Employee is part time present!");
-			System.out.println("Daily wage of an part timer employee is" + " " + finalWage);
+			System.out.println("Daily wage of an part timer employee is" + " " + dayWage);
 		}
 		else
 		{
 			System.out.println("Employee is Absent!");
+		}*/
+		switch (empCheck) 
+		{
+			case 2: 
+			{	
+				dayWage = (wagePerHr * partDayHr );
+				monthlyWage = (dayInMonth * dayWage);
+				System.out.println("Employee is part time present!");
+				System.out.println("Daily wage of an part timer employee is" + " " + dayWage + " " + "Rs");
+				System.out.println("Monthly wage of an part timer employee is" + " " + monthlyWage + " " + "Rs");
+				break;
+			}
+			case 1:
+			{
+				dayWage = (wagePerHr * fullDayHr );
+				monthlyWage = (dayInMonth * dayWage);
+				System.out.println("Employee is Full Time Present!");
+				System.out.println("Daily wage of an full timer employee is" + " " + dayWage + " " + "Rs");
+				System.out.println("Monthly wage of an full timer employee is" + " " + monthlyWage + " " + "Rs");
+				break;
+			}
+			case 0:
+			{
+				System.out.println("Employee is Absent!");
+				break;
+			}
+			default:
+				throw new IllegalArgumentException("Unexpected value: " + empCheck);
 		}
 	}
 }
